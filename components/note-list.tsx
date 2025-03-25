@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import type { Note } from "@/types/note"
-import { formatDistanceToNow } from "@/lib/utils"
+import { formatDistanceToNow } from "date-fns"
 import { Badge } from "@/components/ui/badge"
 import { MoreVertical, Edit, Trash } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
