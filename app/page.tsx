@@ -10,7 +10,7 @@ import type { Folder } from "@/types/folder"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
 export default function Home() {
   const [selectedNote, setSelectedNote] = useState<Note | null>(null)
@@ -200,6 +200,7 @@ export default function Home() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="p-0 w-[280px]">
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 {renderSidebar()}
               </SheetContent>
             </Sheet>
