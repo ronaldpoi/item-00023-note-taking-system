@@ -105,9 +105,7 @@ export function NoteEditor({ note, folders, onUpdate, onDelete, onSelectFolder }
         </Button>
       </div>
 
-      <div className="p-4 border-b">
-        <FolderSelect folders={folders} selectedFolderId={folderId} onSelectFolder={handleFolderChange} />
-      </div>
+      
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
         <div className="border-b px-4 bg-muted">
@@ -149,7 +147,10 @@ export function NoteEditor({ note, folders, onUpdate, onDelete, onSelectFolder }
       </Tabs>
 
       <div className="p-4 border-t">
-        <TagInput tags={tags} setTags={setTags} showLabel={false} />
+        <div className="grid grid-cols-2 gap-2 items-end">
+          <TagInput tags={tags} setTags={setTags} showLabel={false} />
+          <FolderSelect folders={folders} selectedFolderId={folderId} onSelectFolder={handleFolderChange} />
+        </div>
       </div>
 
       <div className="p-2 border-t text-xs text-muted-foreground flex justify-between">

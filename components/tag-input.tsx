@@ -36,12 +36,12 @@ export function TagInput({ tags, setTags, showLabel = true }: TagInputProps) {
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="w-50">
       {showLabel && <label className="text-sm font-medium">Tags</label>}
       {tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-2">
           {tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="gap-1">
+            <Badge key={tag} variant="outline" className="gap-1 !bg-blue-500">
               {tag}
               <button
                 type="button"
@@ -55,24 +55,14 @@ export function TagInput({ tags, setTags, showLabel = true }: TagInputProps) {
           ))}
         </div>
       )}
-      <div className="flex gap-2">
-        <Input
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Add tag..."
-          className="flex-1"
-        />
-        <button
-          type="button"
-          onClick={handleAddTag}
-          disabled={!inputValue.trim()}
-          className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-        >
-          <Plus className="h-4 w-4" />
-          <span className="sr-only">Add tag</span>
-        </button>
-      </div>
+
+      <Input
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleKeyDown}
+        placeholder="Add tag..."
+        className="flex-1"
+      />
     </div>
   )
 }
