@@ -29,18 +29,18 @@ export function FolderList({
   const [folderToEdit, setFolderToEdit] = useState<Folder | undefined>(undefined)
   const [folderToDelete, setFolderToDelete] = useState<string | null>(null)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [openDropdownId, setOpenDropdownId] = useState<string | null>(null)
 
   const handleEditFolder = (folder: Folder) => {
     setFolderToEdit(folder)
     setEditDialogOpen(true)
-    setDropdownOpen(false)
+    setOpenDropdownId(null)
   }
 
   const handleDeleteClick = (folderId: string) => {
     setFolderToDelete(folderId)
     setShowDeleteDialog(true)
-    setDropdownOpen(false)
+    setOpenDropdownId(null)
   }
 
   const handleConfirmDelete = () => {
@@ -100,7 +100,10 @@ export function FolderList({
             </Button>
 
             <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-              <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
+              <DropdownMenu
+                open={openDropdownId === folder.id}
+                onOpenChange={(open) => setOpenDropdownId(open ? folder.id : null)}
+              >
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-7 w-7">
                     <MoreVertical className="h-3 w-3" />
@@ -138,10 +141,18 @@ export function FolderList({
         folder={folderToEdit}
       />
 
-      {/* Custom delete confirmation dialog */}
       {showDeleteDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-background rounded-lg p-6 max-w-md w-full">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          style={{ pointerEvents: "auto" }}
+          onClick={(e) => {
+            // Close when clicking the backdrop, but not when clicking the dialog
+            if (e.target === e.currentTarget) {
+              handleCancelDelete()
+            }
+          }}
+        >
+          <div className="bg-background rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
             <h2 className="text-lg font-semibold mb-2">Delete Folder?</h2>
             <p className="text-muted-foreground mb-4">
               This will delete the folder, but not the notes inside it. Notes will be moved to "All Notes".

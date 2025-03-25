@@ -105,7 +105,9 @@ export function NoteEditor({ note, folders, onUpdate, onDelete, onSelectFolder }
         </Button>
       </div>
 
-      
+      <div className="p-4 border-b">
+        <FolderSelect folders={folders} selectedFolderId={folderId} onSelectFolder={handleFolderChange} />
+      </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
         <div className="border-b px-4 bg-muted">
@@ -160,8 +162,17 @@ export function NoteEditor({ note, folders, onUpdate, onDelete, onSelectFolder }
 
       {/* Custom delete confirmation dialog */}
       {showDeleteDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-background rounded-lg p-6 max-w-md w-full">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          style={{ pointerEvents: "auto" }}
+          onClick={(e) => {
+            // Close when clicking the backdrop, but not when clicking the dialog
+            if (e.target === e.currentTarget) {
+              handleCancelDelete()
+            }
+          }}
+        >
+          <div className="bg-background rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
             <h2 className="text-lg font-semibold mb-2">Are you sure?</h2>
             <p className="text-muted-foreground mb-4">
               This action cannot be undone. This will permanently delete the note.

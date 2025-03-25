@@ -18,11 +18,11 @@ interface NoteListProps {
 export function NoteList({ notes, selectedNote, onSelectNote, onDeleteNote }: NoteListProps) {
   const [noteToDelete, setNoteToDelete] = useState<string | null>(null)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [openDropdownId, setOpenDropdownId] = useState<string | null>(null)
 
   const handleDeleteClick = (noteId: string) => {
     // Close the dropdown menu first
-    setDropdownOpen(false)
+    setOpenDropdownId(null)
 
     // Then show the delete dialog
     setNoteToDelete(noteId)
@@ -80,7 +80,10 @@ export function NoteList({ notes, selectedNote, onSelectNote, onDeleteNote }: No
             </div>
 
             <div className="absolute top-2 right-2" onClick={(e) => e.stopPropagation()}>
-              <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
+              <DropdownMenu
+                open={openDropdownId === note.id}
+                onOpenChange={(open) => setOpenDropdownId(open ? note.id : null)}
+              >
                 <DropdownMenuTrigger asChild>
                   <button className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted">
                     <MoreVertical className="h-4 w-4" />
@@ -112,8 +115,17 @@ export function NoteList({ notes, selectedNote, onSelectNote, onDeleteNote }: No
 
       {/* Custom delete confirmation dialog */}
       {showDeleteDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-background rounded-lg p-6 max-w-md w-full">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          style={{ pointerEvents: "auto" }}
+          onClick={(e) => {
+            // Close when clicking the backdrop, but not when clicking the dialog
+            if (e.target === e.currentTarget) {
+              handleCancelDelete()
+            }
+          }}
+        >
+          <div className="bg-background rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
             <h2 className="text-lg font-semibold mb-2">Are you sure?</h2>
             <p className="text-muted-foreground mb-4">
               This action cannot be undone. This will permanently delete the note.
