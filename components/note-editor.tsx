@@ -99,7 +99,7 @@ export function NoteEditor({ note, folders, onUpdate, onDelete, onSelectFolder }
           placeholder="Untitled Note"
           className="text-lg font-medium border border-black border-dashed focus:border-solid hover:border-solid px-2 py-1 h-auto"
         />
-        <Button variant="outline" size="icon" className="text-destructive ml-2" onClick={handleDeleteClick}>
+        <Button variant="destructive" size="icon" className=" ml-2" onClick={handleDeleteClick}>
           <Trash className="h-4 w-4" />
           <span className="sr-only">Delete note</span>
         </Button>
