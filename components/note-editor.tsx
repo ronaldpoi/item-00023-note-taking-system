@@ -92,7 +92,7 @@ export function NoteEditor({ note, folders, onUpdate, onDelete, onSelectFolder }
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center justify-between p-4 border-b">
+      <div className="flex items-center justify-between p-4 border-b pl-16 md:pl-4">
         <Input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -163,7 +163,7 @@ export function NoteEditor({ note, folders, onUpdate, onDelete, onSelectFolder }
       {/* Custom delete confirmation dialog */}
       {showDeleteDialog && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-8"
           style={{ pointerEvents: "auto" }}
           onClick={(e) => {
             // Close when clicking the backdrop, but not when clicking the dialog

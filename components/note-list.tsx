@@ -116,7 +116,7 @@ export function NoteList({ notes, selectedNote, onSelectNote, onDeleteNote }: No
       {/* Custom delete confirmation dialog */}
       {showDeleteDialog && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-8"
           style={{ pointerEvents: "auto" }}
           onClick={(e) => {
             // Close when clicking the backdrop, but not when clicking the dialog
