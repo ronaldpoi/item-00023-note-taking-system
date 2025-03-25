@@ -41,7 +41,7 @@ export function TagInput({ tags, setTags, showLabel = true }: TagInputProps) {
       {tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-2">
           {tags.map((tag) => (
-            <Badge key={tag} variant="outline" className="gap-1 !bg-blue-500">
+            <Badge key={tag} variant="outline" className="gap-1">
               {tag}
               <button
                 type="button"
