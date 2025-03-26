@@ -1,0 +1,56 @@
+/* Markdown content styling */
+.markdown-content {
+  max-width: none;
+  color: hsl(var(--foreground));
+}
+
+.markdown-content a {
+  color: hsl(var(--primary));
+}
+
+.markdown-content a:hover {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.markdown-content strong {
+  color: hsl(var(--foreground));
+}
+
+.markdown-content code {
+  color: hsl(var(--foreground));
+}
+
+.markdown-content pre {
+  background-color: hsl(var(--muted));
+}
+
+.markdown-content blockquote {
+  border-left-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+}
+
+.markdown-content hr {
+  border-color: hsl(var(--border));
+}
+
+.markdown-content table {
+  color: hsl(var(--foreground));
+}
+
+.markdown-content th {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.markdown-content td {
+  color: hsl(var(--foreground));
+} 

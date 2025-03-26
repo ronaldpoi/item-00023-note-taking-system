@@ -88,64 +88,7 @@ const config: Config = {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
-  		},
-  		typography: {
-  			DEFAULT: {
-  				css: {
-  					maxWidth: 'none',
-  					color: 'hsl(var(--foreground))',
-  					a: {
-  						color: 'hsl(var(--primary))',
-  						'&:hover': {
-  							color: 'hsl(var(--primary))',
-  							textDecoration: 'underline',
-  						},
-  					},
-  					h1: {
-  						color: 'hsl(var(--foreground))',
-  						fontWeight: '600',
-  					},
-  					h2: {
-  						color: 'hsl(var(--foreground))',
-  						fontWeight: '600',
-  					},
-  					h3: {
-  						color: 'hsl(var(--foreground))',
-  						fontWeight: '600',
-  					},
-  					h4: {
-  						color: 'hsl(var(--foreground))',
-  						fontWeight: '600',
-  					},
-  					strong: {
-  						color: 'hsl(var(--foreground))',
-  					},
-  					code: {
-  						color: 'hsl(var(--foreground))',
-  					},
-  					pre: {
-  						backgroundColor: 'hsl(var(--muted))',
-  					},
-  					blockquote: {
-  						borderLeftColor: 'hsl(var(--muted))',
-  						color: 'hsl(var(--muted-foreground))',
-  					},
-  					hr: {
-  						borderColor: 'hsl(var(--border))',
-  					},
-  					table: {
-  						color: 'hsl(var(--foreground))',
-  					},
-  					th: {
-  						color: 'hsl(var(--foreground))',
-  						fontWeight: '600',
-  					},
-  					td: {
-  						color: 'hsl(var(--foreground))',
-  					},
-  				},
-  			},
-  		},
+  		}
   	}
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
